@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/onboarding_screen.dart';
+import 'package:shop_app/shared/styles/colors.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,6 +9,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.orange[400],
+        fontFamily: "Roboto",
+      ),
+      home: OnBoardingScreen(),
+    );
   }
 }
