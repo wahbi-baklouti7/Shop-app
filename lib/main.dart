@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/onboarding_screen.dart';
-import 'package:shop_app/shared/styles/colors.dart';
+
 
 void main() {
   runApp(MyApp());

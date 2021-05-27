@@ -5,6 +5,7 @@ import 'package:shop_app/shared/components/components.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+
 class OnBoardingScreen extends StatelessWidget {
   List<OnBoarding> onboarding = [
     OnBoarding(
@@ -34,8 +35,10 @@ class OnBoardingScreen extends StatelessWidget {
           actions: [
             TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                      (route) => false);
                 },
                 child: Text("Skip",
                     style: TextStyle(
@@ -78,8 +81,10 @@ class OnBoardingScreen extends StatelessWidget {
                       duration: Duration(milliseconds: 700),
                       curve: Curves.easeInOut);
                   if (pageIndex == onboarding.length - 1) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()));
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        (route) => false);
                   }
                 },
                 child: Text(
