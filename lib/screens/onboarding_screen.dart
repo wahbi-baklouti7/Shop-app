@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/onboarding.dart';
-import 'package:shop_app/screens/login_screen.dart';
+import 'package:shop_app/screens/shop_login_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -25,6 +25,7 @@ class OnBoardingScreen extends StatelessWidget {
 
   PageController _pageController = PageController();
   int pageIndex;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,18 +34,19 @@ class OnBoardingScreen extends StatelessWidget {
           backwardsCompatibility: false,
           elevation: 0,
           actions: [
-            TextButton(
-                onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
-                      (route) => false);
-                },
-                child: Text("Skip",
+            defaultTextButton(
+              text:Text("Skip",
                     style: TextStyle(
                         fontSize: 20,
                         color: primaryColor,
-                        fontWeight: FontWeight.w400))),
+                        fontWeight: FontWeight.w400)) ,
+              function:() {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => ShopLoginScreen()),
+                      (route) => false);
+                }, )
+            
           ]),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 30),
@@ -52,6 +54,7 @@ class OnBoardingScreen extends StatelessWidget {
           children: [
             Expanded(
               child: PageView.builder(
+                
                 physics: BouncingScrollPhysics(),
                 controller: _pageController,
                 onPageChanged: (index) => pageIndex = index,
@@ -76,14 +79,13 @@ class OnBoardingScreen extends StatelessWidget {
               Spacer(),
               TextButton(
                 onPressed: () {
-                  print(pageIndex);
                   _pageController.nextPage(
                       duration: Duration(milliseconds: 700),
                       curve: Curves.easeInOut);
                   if (pageIndex == onboarding.length - 1) {
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        MaterialPageRoute(builder: (context) => ShopLoginScreen()),
                         (route) => false);
                   }
                 },
@@ -102,3 +104,6 @@ class OnBoardingScreen extends StatelessWidget {
     );
   }
 }
+
+
+
