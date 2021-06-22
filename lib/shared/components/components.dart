@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/models/onboarding.dart';
 
 Widget buildOnboardingItem(OnBoarding model) {
@@ -50,12 +51,51 @@ Widget defaultFromValidation({
     decoration: InputDecoration(
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(0)),
       prefixIcon: Icon(prefixIcon),
-      suffixIcon: IconButton(icon:Icon(suffixIcon),onPressed: suffixPress,),
-
-      
+      suffixIcon: IconButton(
+        icon: Icon(suffixIcon),
+        onPressed: suffixPress,
+      ),
       labelText: label,
       hintText: hintText,
     ),
     validator: validation,
   );
+}
+
+Widget navigateAndFinish(BuildContext context, Widget widget) {
+  Navigator.pushAndRemoveUntil(context,
+      MaterialPageRoute(builder: (context) => widget), (route) => false);
+}
+
+
+
+Widget showToast({@required String message, @required MessageType messageType}) {
+  Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: chooseMessageColor(messageType),
+      textColor: Colors.white,
+      fontSize: 16.0);
+}
+
+
+enum MessageType { SUCCESS, WARNING, ERROR }
+
+Color chooseMessageColor(MessageType messageType) {
+  Color color;
+
+  switch (messageType) {
+    case MessageType.SUCCESS:
+      color = Colors.green;
+      break;
+    case MessageType.ERROR:
+      color = Colors.red;
+      break;
+    case MessageType.WARNING:
+      color = Colors.yellow;
+      break;
+    
+  }
+  return color;
 }

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/cubit/loginCubit/shop_login_cubit.dart';
 import 'package:shop_app/cubit/loginCubit/shop_login_state.dart';
+import 'package:shop_app/layouts/home_layout_screen.dart';
 import 'package:shop_app/screens/shop_register_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shop_app/shared/network/local/cache_helper.dart';
 
 class ShopLoginScreen extends StatelessWidget {
   var emailController = TextEditingController();
@@ -15,7 +18,22 @@ class ShopLoginScreen extends StatelessWidget {
     return BlocProvider(
         create: (context) => ShopLoginCubit(),
         child: BlocConsumer<ShopLoginCubit, ShopLoginState>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is ShopLoginSuccessState) {
+              if (state.loginModel.status) {
+                showToast(
+                    message: state.loginModel.message,
+                    messageType: MessageType.SUCCESS);
+                CacheHelper.saveData(
+                        key: "token", value: state.loginModel.data.token)
+                    .then((value) => navigateAndFinish(context, HomeLayout()));
+              } else {
+                showToast(
+                    message: state.loginModel.message,
+                    messageType: MessageType.ERROR);
+              }
+            }
+          },
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
