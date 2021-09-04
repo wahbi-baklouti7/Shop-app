@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/models/onboarding.dart';
-import 'package:shop_app/screens/shop_login_screen.dart';
+import 'package:shop_app/models/onboarding_model.dart';
+import 'package:shop_app/screens/login/shop_login_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
 import 'package:shop_app/shared/network/local/cache_helper.dart';
 import 'package:shop_app/shared/styles/colors.dart';
