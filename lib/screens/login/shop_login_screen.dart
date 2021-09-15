@@ -30,7 +30,7 @@ class ShopLoginScreen extends StatelessWidget {
                     .then((value) {
                   navigateAndFinish(context, HomeLayout());
                   token = state.loginModel.data.token;
-                  print(token);
+                  
                 });
               } else {
                 showToast(

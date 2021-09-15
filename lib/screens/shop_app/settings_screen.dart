@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/cubit/shopapp/shop_cubit.dart';
-import 'package:shop_app/models/login_model.dart';
 import 'package:shop_app/screens/login/shop_login_screen.dart';
 import 'package:shop_app/shared/components/components.dart';
-import 'package:shop_app/shared/components/constants.dart';
 import 'package:shop_app/shared/network/local/cache_helper.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -16,9 +14,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopState>(
-      listener: (context, state) {
-        
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         var cubit = ShopCubit.get(context).userModel;
         nameController.text = cubit.data.name;
@@ -85,7 +81,9 @@ class SettingsScreen extends StatelessWidget {
                       CacheHelper.removeData(key: "token").then((value) {
                         if (value) {
                           navigateAndFinish(context, ShopLoginScreen());
-                          showToast(message: cubit.message, messageType: MessageType.SUCCESS);
+                          showToast(
+                              message: cubit.message,
+                              messageType: MessageType.SUCCESS);
                         }
                       });
                     })
