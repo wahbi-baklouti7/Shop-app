@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/cubit/shopapp/shop_cubit.dart';
 import 'package:shop_app/models/onboarding_model.dart';
-import 'package:shop_app/models/search_model.dart';
 import 'package:shop_app/shared/styles/colors.dart';
 
 Widget buildOnboardingItem(OnBoarding model) {

@@ -14,7 +14,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
   DioHelper.init();
-  Bloc.observer = MyBlocObserver();
+
+ // Bloc.observer = MyBlocObserver();
 
   Widget widget;
 

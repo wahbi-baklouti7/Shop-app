@@ -31,7 +31,6 @@ class OnBoardingScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.white,
-          backwardsCompatibility: false,
           elevation: 0,
           actions: [
             defaultTextButton(

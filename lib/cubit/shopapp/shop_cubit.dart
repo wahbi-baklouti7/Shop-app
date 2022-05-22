@@ -1,16 +1,13 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/models/ChangeFavoritesMode.dart';
 import 'package:shop_app/models/categories_model.dart';
 import 'package:shop_app/models/favorites_model.dart';
 import 'package:shop_app/models/login_model.dart';
-import 'package:shop_app/models/search_model.dart';
 import 'package:shop_app/models/shop_model.dart';
 import 'package:shop_app/screens/shop_app/categories_screen.dart';
 import 'package:shop_app/screens/shop_app/favorites_screen.dart';
 import 'package:shop_app/screens/shop_app/products_screen.dart';
-import 'package:shop_app/screens/shop_app/search_screen.dart';
 import 'package:shop_app/screens/shop_app/settings_screen.dart';
 import 'package:shop_app/shared/components/constants.dart';
 import 'package:shop_app/shared/network/remote/dio_helper.dart';
